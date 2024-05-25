@@ -30,13 +30,13 @@
                      <!-- input type="text" id="tipoDePlaca" placeholder="tipo de placa"-->
                      <lt>Tipo de placa</lt>
                      <select input id="tipoDePlaca">
-                        <option id="option_st">st. 1.60 x 1.80</option>
-                        <option id="option_lev">lev 1.60 x 2.20</option>
+                        <option id="option_st">st</option>
+                        <option id="option_lev">lev</option>
                      </select>
                   </label>
                   <label>
-                     <lt>Cumprimento</lt>
-                     <input type="number" id="input_cumprimento" placeholder="cumprimento">
+                     <lt>Comprimento</lt>
+                     <input type="number" id="input_comprimento" placeholder="comprimento">
                   </label>
                   <label>
                      <lt>Largura</lt>
@@ -44,7 +44,7 @@
                   </label>
                   <label>
                      <lt>Área</lt>
-                     <input type="number" id="" placeholder="área">
+                     <input type="number" id="input_area" placeholder="área">
                   </label>
                      
                   <label>
@@ -59,9 +59,52 @@
                   <h2>Lista de materiais</h2>
                </content>
             </header>
-            <content>
-               
-            </content>
+            <outputs content id="outputs" gap>
+               <label>
+                  <lt>Placas de gesso st 1.20m x 1.80m</lt>
+                  <input type="number" id="output_placas" value="" >
+               </label>
+               <label>
+                  <lt>Tabica branca 3m</lt>
+                  <input type="number" id="output_tabicas" value="" >
+               </label>
+               <label>
+                  <lt>Perfil F-530</lt>
+                  <input type="number" id="output_perfis" value="" >
+               </label>
+               <label>
+                  <lt>Arame 10</lt>
+                  <input type="number" id="output_arames" value="" >
+               </label>
+               <label>
+                  <lt>Regulador</lt>
+                  <input type="number" id="output_reguladores" value="" >
+               </label>
+               <label>
+                  <lt>união</lt>
+                  <input type="number" id="output_unioes" value="" >
+               </label>
+               <label>
+                  <lt>Parafuso GN 25</lt>
+                  <input type="number" id="output_gn25" value="" >
+               </label>
+               <label>
+                  <lt>Parafuso 4,5 x 45 com bucha</lt>
+                  <input type="number" id="output_buchas" value="" >
+               </label>
+               <label>
+                  <lt>Fita de papel</lt>
+                  <input type="number" id="output_fitas" value="" >
+               </label>
+               <label>
+                  <lt>Massa DryWall</lt>
+                  <input type="number" id="output_massas" value="" >
+               </label>
+               <label>
+                  <lt></lt>
+                  <input type="number" id="output_" value="" >
+               </label>
+            </outputs>
          </lista-de-materiais>
       </home-page>
       
@@ -107,10 +150,17 @@
          ;
          
          const Area = {
-            st: ( 1.80 * 1.20 ),
-            ru: ( 1.80 * 1.20 ),
-            rf: ( 1.80 * 1.20 ),
-            lev: ( 2.40 * 1.20 ),
+            placas: {
+               st: ( 1.80 * 1.20 ),
+               ru: ( 1.80 * 1.20 ),
+               rf: ( 1.80 * 1.20 ),
+               lev: ( 2.40 * 1.20 ),
+            },
+            placa: 0,
+            comprimento: 0,
+            largura: 0,
+            area: 0,
+            linear: 0,
          };
          
          // export default CLB;
@@ -143,9 +193,32 @@
             
             form.addEventListener( "submit", () => {
                event.preventDefault();
-               if( input_cumprimento ) {
+               _( "\n\n\non submit: ",
+                  tipoDePlaca.value
+               );
+               if( input_comprimento.value != "" ) {
+                  Area.comprimento = input_comprimento.value;
+                  Area.largura = input_largura.value;
+                  Area.placa = eval( `Area.placas.${ tipoDePlaca.value }` );
+                  _( "eval: ", Area.placa );
+                  Area.area = ( ( Area.comprimento * Area.largura ) );
+                  _( "Area.area: ", Area.area );
+                  Area.linear = ( ( Area.comprimento * 2 ) + ( Area.largura * 2 ) );
+                  _( "Area.linear: ", Area.linear );
                   
-               }
+                  /* outputs */
+                  input_area.value = Area.area;
+                  output_placas.value = Area.
+                  output_tabicas.value = Area.
+                  output_perfis.value = Area.
+                  output_arames.value = Area.
+                  output_reguladores.value = Area.
+                  output_unioes.value = Area.
+                  output_gn25.value = Area.
+                  output_buchas.value = Area.
+                  output_fitas.value = Area.
+                  output_massas.value = Area.
+               } 
             } );
             
          } );  // addEventListener
