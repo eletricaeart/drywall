@@ -29,7 +29,7 @@
                   <label>
                      <!-- input type="text" id="tipoDePlaca" placeholder="tipo de placa"-->
                      <lt>Tipo de placa</lt>
-                     <select input id="tipoDePlaca">
+                     <select input id="tipoDaPlaca">
                         <option id="option_st">st</option>
                         <option id="option_lev">lev</option>
                      </select>
@@ -45,6 +45,11 @@
                   <label>
                      <lt>Área</lt>
                      <input type="number" id="input_area" placeholder="área">
+                  </label>
+                     
+                  <label>
+                     <lt>Perímetro</lt>
+                     <input type="number" id="input_perimetro" placeholder="Perímetro">
                   </label>
                      
                   <label>
@@ -150,7 +155,7 @@
          ;
          
          const Area = {
-            placas: {
+            tiposDePlacas: {
                st: ( 1.80 * 1.20 ),
                ru: ( 1.80 * 1.20 ),
                rf: ( 1.80 * 1.20 ),
@@ -161,6 +166,16 @@
             largura: 0,
             area: 0,
             linear: 0,
+            placas: 0,
+            tabicas: 0,
+            perfis: 0,
+            arames: 0,
+            reguladores: 0,
+            unioes: 0,
+            gn25: 0,
+            buchas: 0,
+            fitas: 0,
+            massas: 0,
          };
          
          // export default CLB;
@@ -194,30 +209,55 @@
             form.addEventListener( "submit", () => {
                event.preventDefault();
                _( "\n\n\non submit: ",
-                  tipoDePlaca.value
+                  tipoDaPlaca.value
                );
                if( input_comprimento.value != "" ) {
                   Area.comprimento = input_comprimento.value;
                   Area.largura = input_largura.value;
-                  Area.placa = eval( `Area.placas.${ tipoDePlaca.value }` );
+                  Area.placa = eval( `Area.tiposDePlacas.${ tipoDaPlaca.value }` );
                   _( "eval: ", Area.placa );
                   Area.area = ( ( Area.comprimento * Area.largura ) );
                   _( "Area.area: ", Area.area );
                   Area.linear = ( ( Area.comprimento * 2 ) + ( Area.largura * 2 ) );
                   _( "Area.linear: ", Area.linear );
+                  Area.placas = Math.round( Area.area / Area.placa );
+                  Area.linear = input_perimetro.value = ( ( Area.comprimento * 2 ) + ( Area.largura * 2 ) );
+                  Area.tabicas = Math.round( Area.linear / 3 );/*
+                  Area.perfis = 
+                  Area.arames = 
+                  Area.reguladores = 
+                  Area.unioes = 
+                  Area.gn25 = 
+                  Area.buchas = 
+                  Area.fitas = 
+                  Area.massas = 
+                  */
+                  
+                  /* inputs */
+                  
+                  /*
+                  Area.tabicas = 
+                  Area.perfis = 
+                  Area.arames = 
+                  Area.reguladores = 
+                  Area.unioes = 
+                  Area.gn25 = 
+                  Area.buchas = 
+                  Area.fitas = 
+                  Area.massas = */
                   
                   /* outputs */
                   input_area.value = Area.area;
-                  output_placas.value = Area.
-                  output_tabicas.value = Area.
-                  output_perfis.value = Area.
-                  output_arames.value = Area.
-                  output_reguladores.value = Area.
-                  output_unioes.value = Area.
-                  output_gn25.value = Area.
-                  output_buchas.value = Area.
-                  output_fitas.value = Area.
-                  output_massas.value = Area.
+                  output_placas.value = Area.placas;
+                  output_tabicas.value = Area.tabicas;
+                  output_perfis.value = Area.perfis;
+                  output_arames.value = Area.arames;
+                  output_reguladores.value = Area.reguladores;
+                  output_unioes.value = Area.unioes;
+                  output_gn25.value = Area.gn25;
+                  output_buchas.value = Area.buchas;
+                  output_fitas.value = Area.fitas;
+                  output_massas.value = Area.massas;
                } 
             } );
             
