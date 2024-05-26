@@ -1,0 +1,57 @@
+
+
+Inputs
+Input_tipoDaChapa
+Input_length
+Input_width
+
+
+tiposDePlacas: {
+   st: ( 1.80 * 1.20 ),
+   ru: ( 1.80 * 1.20 ),
+   rf: ( 1.80 * 1.20 ),
+   lev: ( 2.40 * 1.20 ),
+}
+area = ( width, height )
+Input_area
+
+perímetro = ( width, height )
+Input_perimetro
+
+chapas = ( width, height ) 
+Output_chapas
+
+montantes = () 
+guias = () 
+
+tabicas = ( width, height ) 
+Output_tabicas
+
+Output_unioes
+
+perfis = ( width ) 
+Output_perfis
+
+reguladores = ( width ) 
+Output_reguladores
+
+fixadores = ( width ) 
+Output_fixadores
+
+tirantes = ( width, rebaixo ) 
+Output_tirantes
+
+parafusos = {
+   gn25: ( width, height ) 
+   Output_gn25
+
+   buchas: ( width, height )    
+   Output_buchas
+
+   metal: ( width ) 
+   Output_metal
+}
+massas = ( width, height ) 
+Output_massas
+
+Output_fitas

@@ -29,26 +29,26 @@
                   <label>
                      <!-- input type="text" id="tipoDePlaca" placeholder="tipo de placa"-->
                      <lt>Tipo de placa</lt>
-                     <select input id="tipoDaPlaca">
+                     <select input id="input_tipoDaChapa">
                         <option id="option_st">st</option>
                         <option id="option_lev">lev</option>
                      </select>
                   </label>
                   <label>
                      <lt>Comprimento</lt>
-                     <input type="number" id="input_comprimento" placeholder="comprimento">
+                     <input type="number" id="input_length" placeholder="comprimento">
                   </label>
                   <label>
                      <lt>Largura</lt>
-                     <input type="number" id="input_largura" placeholder="largura">
+                     <input type="number" id="input_width" placeholder="largura">
                   </label>
                   <label>
-                     <lt>Área</lt>
+                     <lt>Área ( metro quadrado )</lt>
                      <input type="number" id="input_area" placeholder="área">
                   </label>
                      
                   <label>
-                     <lt>Perímetro</lt>
+                     <lt>Perímetro ( metro linear )</lt>
                      <input type="number" id="input_perimetro" placeholder="Perímetro">
                   </label>
                      
@@ -66,8 +66,8 @@
             </header>
             <outputs content id="outputs" gap>
                <label>
-                  <lt>Placas de gesso st 1.20m x 1.80m</lt>
-                  <input type="number" id="output_placas" value="" >
+                  <lt>Chapas de gesso st 1.20m x 1.80m</lt>
+                  <input type="number" id="output_chapas" value="" >
                </label>
                <label>
                   <lt>Tabica branca 3m</lt>
@@ -78,8 +78,8 @@
                   <input type="number" id="output_perfis" value="" >
                </label>
                <label>
-                  <lt>Arame 10</lt>
-                  <input type="number" id="output_arames" value="" >
+                  <lt>Tirantes ( Arame 10 )</lt>
+                  <input type="number" id="output_tirantes" value="" >
                </label>
                <label>
                   <lt>Regulador</lt>
@@ -90,8 +90,16 @@
                   <input type="number" id="output_unioes" value="" >
                </label>
                <label>
-                  <lt>Parafuso GN 25</lt>
+                  <lt>Parafusos GN 25</lt>
                   <input type="number" id="output_gn25" value="" >
+               </label>
+               <label>
+                  <lt>Parafusos Fixadores</lt>
+                  <input type="number" id="output_fixadores" value="" >
+               </label>
+               <label>
+                  <lt>Parafusos metal metal</lt>
+                  <input type="number" id="output_metal" value="" >
                </label>
                <label>
                   <lt>Parafuso 4,5 x 45 com bucha</lt>
@@ -104,10 +112,6 @@
                <label>
                   <lt>Massa DryWall</lt>
                   <input type="number" id="output_massas" value="" >
-               </label>
-               <label>
-                  <lt></lt>
-                  <input type="number" id="output_" value="" >
                </label>
             </outputs>
          </lista-de-materiais>
@@ -124,8 +128,6 @@
             $ = v => document.querySelector( v )
             ,
             $$ = v => document.querySelectorAll( v )
-            ,
-            $$a = ( e, a ) => e.getAttribute( a )
          ;
          HTMLElement.prototype.$a = function( v ) {
             return( 
@@ -155,11 +157,33 @@
          ;
          
          const 
-            tiposDePlacas: {
+            tiposDePlacas = {
                st: ( 1.80 * 1.20 ),
                ru: ( 1.80 * 1.20 ),
                rf: ( 1.80 * 1.20 ),
                lev: ( 2.40 * 1.20 ),
+            }
+            ,
+            values = {
+               chapa: 0,
+               Length: 0,
+               Width: 0,
+               area: 0,
+               perímetro: 0,
+               chapas: 0,
+               montantes: 0,
+               guias: 0,
+               tabicas: 0,
+               unioes: 0,
+               perfis: 0,
+               reguladores: 0,
+               fixadores: 0,
+               tirantes: 0,
+               gn25: 0,
+               buchas: 0,
+               metal: 0,
+               massas: 0,
+               fitas: 0,
             }
             ,
             area = ( width, height ) => {
@@ -203,7 +227,6 @@
                return(
                   perfis( width ) * 3
                );
-      
                /* 
                   =================================
                   |   |   |   |   |   |   |   |   I
@@ -218,6 +241,7 @@
                   =================================
                */
             }
+            ,
             fixadores = ( width ) => {
                return(
                   reguladores( width )
@@ -239,7 +263,6 @@
                },
                buchas: ( width, height ) => {
                   let tabs = ( tabicas( width, height ) / .5 );
-      
                   return( 
                      // ( tabcas( width, height ) / .5 )
                      tabs + ( tabs * 2 )
@@ -287,55 +310,55 @@
             form.addEventListener( "submit", () => {
                event.preventDefault();
                _( "\n\n\non submit: ",
-                  tipoDaPlaca.value
+                  input_tipoDaChapa.value
                );
-               if( input_comprimento.value != "" ) {
-                  Area.comprimento = input_comprimento.value;
-                  Area.largura = input_largura.value;
-                  Area.placa = eval( `Area.tiposDePlacas.${ tipoDaPlaca.value }` );
-                  _( "eval: ", Area.placa );
-                  Area.area = ( ( Area.comprimento * Area.largura ) );
-                  _( "Area.area: ", Area.area );
-                  Area.linear = ( ( Area.comprimento * 2 ) + ( Area.largura * 2 ) );
-                  _( "Area.linear: ", Area.linear );
-                  Area.placas = Math.ceil( Area.area / Area.placa );
-                  Area.linear = input_perimetro.value = ( ( Area.comprimento * 2 ) + ( Area.largura * 2 ) );
-                  Area.tabicas = Math.ceil( Area.linear / 3 );/*
-                  Area.perfis = 
-                  Area.arames = 
-                  Area.reguladores = 
-                  Area.unioes = 
-                  Area.gn25 = 
-                  Area.buchas = 
-                  Area.fitas = 
-                  Area.massas = 
-                  */
+               if( input_length.value != "" ) {
+                  values.Length = input_length.value;
+                  values.Width = input_width.value;
+                  // chapa = eval( `Area.tiposDePlacas.${ tipoDaPlaca.value }` );
+                  // _( "eval: ", Area.placa );
+                  values.area = area( values.Length, values.Width );
+                  _( "area: ", values.area );
+                  values.perímetro = perímetro( values.Length, values.Width );
+                  _( "perímetro: ", values.perímetro );
+                  values.chapas = chapas( values.Length, values.Width );
+                  values.tabicas = tabicas( values.Length, values.Width );
+                  values.perfis = perfis( values.Length );
+                  values.tirantes = tirantes( values.Length, values.rebaixo );
+                  values.reguladores = reguladores( values.Length );
+                  // values.unioes = unioes(  );
+                  values.gn25 = parafusos.gn25( values.Length, values.Width );
+                  values.buchas = parafusos.buchas( values.Length, values.Width );
+                  values.metal = parafusos.metal( values.Length );
+                  // values.fitas = fitas( values.Length );
+                  values.massas = massas( values.Length, values.Width );
+                  
                   
                   /* inputs */
                   
                   /*
-                  Area.tabicas = 
-                  Area.perfis = 
-                  Area.arames = 
-                  Area.reguladores = 
-                  Area.unioes = 
-                  Area.gn25 = 
-                  Area.buchas = 
-                  Area.fitas = 
-                  Area.massas = */
+                  values.tabicas = 
+                  values.perfis = 
+                  values.arames = 
+                  values.reguladores = 
+                  values.unioes = 
+                  values.gn25 = 
+                  values.buchas = 
+                  values.fitas = 
+                  values.massas = */
                   
                   /* outputs */
-                  input_area.value = Area.area;
-                  output_placas.value = Area.placas;
-                  output_tabicas.value = Area.tabicas;
-                  output_perfis.value = Area.perfis;
-                  output_arames.value = Area.arames;
-                  output_reguladores.value = Area.reguladores;
-                  output_unioes.value = Area.unioes;
-                  output_gn25.value = Area.gn25;
-                  output_buchas.value = Area.buchas;
-                  output_fitas.value = Area.fitas;
-                  output_massas.value = Area.massas;
+                  input_area.value = values.area;
+                  output_chapas.value = values.chapas;
+                  output_tabicas.value = values.tabicas;
+                  output_perfis.value = values.perfis;
+                  output_tirantes.value = values.tirantes;
+                  output_reguladores.value = values.reguladores;
+                  //output_unioes.value = values.unioes;
+                  output_gn25.value = values.gn25;
+                  output_buchas.value = values.buchas;
+                  output_fitas.value = values.fitas;
+                  output_massas.value = values.massas;
                } 
             } );
             
@@ -344,9 +367,3 @@
       </script>
    </body>
 </html>
-
-
-<script id="formulas">
-   const 
-
-</script>
