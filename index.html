@@ -43,13 +43,17 @@
                      <input type="number" id="input_width" placeholder="largura">
                   </label>
                   <label>
+                     <lt>Rebaixo</lt>
+                     <input type="" id="input_rebaixo" step="0.01" placeholder="Rebaixo">
+                  </label>
+                  <label>
                      <lt>Área ( metro quadrado )</lt>
                      <input type="number" id="input_area" placeholder="área">
                   </label>
                      
                   <label>
                      <lt>Perímetro ( metro linear )</lt>
-                     <input type="number" id="input_perimetro" placeholder="Perímetro">
+                     <input type="number" id="input_perímetro" placeholder="Perímetro">
                   </label>
                      
                   <label>
@@ -168,6 +172,7 @@
                chapa: 0,
                Length: 0,
                Width: 0,
+               rebaixo: 0,
                area: 0,
                perímetro: 0,
                chapas: 0,
@@ -194,7 +199,8 @@
             ,
             perímetro = ( width, height ) => {
                return( 
-                  ( width + height ) * 2 
+                  // ( width + height ) * 2 
+                  ( width * 2 ) + ( height * 2 )
                );
             }
             ,
@@ -251,7 +257,7 @@
             tirantes = ( width, rebaixo ) => {
                return(
                   /* return metros */
-                  reguladores( width ) * rebaixo
+                  Math.ceil( ( reguladores( width ) * rebaixo ) / 3 ) * 3
                );
             }
             ,
@@ -277,10 +283,15 @@
             ,
             massas = ( width, height ) => {
                return(
-                  Math.ceil( area( width, height ) / 10 )
+                  Math.ceil( area( width, height ) / 10 ) * 5
                );
             }
          ;
+         // function tabicas( width, height ) {
+         //    return(
+         //       Math.ceil( perímetro( width, height ) / 3 )
+         //    );
+         // }
          
          
          
@@ -315,6 +326,7 @@
                if( input_length.value != "" ) {
                   values.Length = input_length.value;
                   values.Width = input_width.value;
+                  values.rebaixo = input_rebaixo.value;
                   // chapa = eval( `Area.tiposDePlacas.${ tipoDaPlaca.value }` );
                   // _( "eval: ", Area.placa );
                   values.area = area( values.Length, values.Width );
@@ -326,6 +338,7 @@
                   values.perfis = perfis( values.Length );
                   values.tirantes = tirantes( values.Length, values.rebaixo );
                   values.reguladores = reguladores( values.Length );
+                  values.fixadores = fixadores( values.Length );
                   // values.unioes = unioes(  );
                   values.gn25 = parafusos.gn25( values.Length, values.Width );
                   values.buchas = parafusos.buchas( values.Length, values.Width );
@@ -333,27 +346,15 @@
                   // values.fitas = fitas( values.Length );
                   values.massas = massas( values.Length, values.Width );
                   
-                  
-                  /* inputs */
-                  
-                  /*
-                  values.tabicas = 
-                  values.perfis = 
-                  values.arames = 
-                  values.reguladores = 
-                  values.unioes = 
-                  values.gn25 = 
-                  values.buchas = 
-                  values.fitas = 
-                  values.massas = */
-                  
                   /* outputs */
                   input_area.value = values.area;
+                  input_perímetro.value = values.perímetro;
                   output_chapas.value = values.chapas;
                   output_tabicas.value = values.tabicas;
                   output_perfis.value = values.perfis;
                   output_tirantes.value = values.tirantes;
                   output_reguladores.value = values.reguladores;
+                  output_fixadores.value = values.fixadores;
                   //output_unioes.value = values.unioes;
                   output_gn25.value = values.gn25;
                   output_buchas.value = values.buchas;

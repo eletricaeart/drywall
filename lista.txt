@@ -1,5 +1,17 @@
 
 
+l4 w3
+-12m²
+-cantoneiras: 5
+-canaletas: 6
+-reguladores: 18
+tirantes: 3
+-chapas: 6
+-gn25: 150
+mm: 12
+-massa: 10
+fita: 1
+
 Inputs
 Input_tipoDaChapa
 Input_length
