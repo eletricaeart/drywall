@@ -266,3 +266,86 @@
       </script>
    </body>
 </html>
+
+
+<script id="formulas">
+   const 
+      width = 6
+      ,
+      height = 3
+      ,
+      Formulas = {
+         area: ( width, height ) => width * height
+         ,
+         perímetro: ( width, height ) => {
+            return( 
+               ( width + height ) * 2 
+            );
+         }
+         ,
+         chapas: ( width, height ) => {
+            return(
+               Math.round( ( width * height ) / ( 1.2 * 1.8 ) ) * .05
+            );
+         },
+         montantes: ,
+         guias: ,
+         tabicas: ( width, height ) => {
+            return(
+               Math.round( perímetro( width, height ) / 3 )
+            );
+         },
+         perfis: ( width ) => {
+            return(
+               Math.floor( width / .6 )
+            );
+         } ,
+         reguladores: ( width ) => {
+            return(
+               perfis( width ) * 3
+            );
+
+            /* 
+               =========================
+               I  I  I  I  I  I  I  I  I
+               I  @  I  @  I  @  I  @  I .6
+               I  I  I  I  I  I  I  I  I
+               I  I  I  I  I  I  I  I  I
+               I  @  I  @  I  @  I  @  I 1
+               I  I  I  I  I  I  I  I  I
+               I  I  I  I  I  I  I  I  I
+               I  @  I  @  I  @  I  @  I .6
+               I  I  I  I  I  I  I  I  I
+               =========================
+            */
+         },
+         tirantes: ( width, rebaixo ) => {
+            return(
+               reguladores( width ) * rebaixo
+            );
+         },
+         parafusos: {
+            gn25: () => {
+               return(
+                  placas * 27
+               );
+            },
+            buchas: ,
+            metal: () => {
+               return(
+                  perfis( width ) * 2
+               );
+            },
+         },
+         massas: ( width, height ) => {
+            return(
+               area( width, height ) 
+            );
+         }
+      }
+   ;
+
+
+   formulas
+   m² = altura * largura
+</script>
