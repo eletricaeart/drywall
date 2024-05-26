@@ -154,32 +154,110 @@
             }
          ;
          
-         const Area = {
+         const 
             tiposDePlacas: {
                st: ( 1.80 * 1.20 ),
                ru: ( 1.80 * 1.20 ),
                rf: ( 1.80 * 1.20 ),
                lev: ( 2.40 * 1.20 ),
+            }
+            ,
+            area = ( width, height ) => {
+               return(
+                  width * height
+               );
+            }
+            ,
+            perímetro = ( width, height ) => {
+               return( 
+                  ( width + height ) * 2 
+               );
+            }
+            ,
+            chapas = ( width, height ) => {
+               return(
+                  Math.ceil( ( ( width * height ) / ( 1.2 * 1.8 ) * 1.05 ) )
+               );
             },
-            placa: 0,
-            comprimento: 0,
-            largura: 0,
-            area: 0,
-            linear: 0,
-            placas: 0,
-            tabicas: 0,
-            perfis: 0,
-            arames: 0,
-            reguladores: 0,
-            unioes: 0,
-            gn25: 0,
-            buchas: 0,
-            fitas: 0,
-            massas: 0,
-         };
-         
-         // export default CLB;
-         /* -------------------------------- */
+            montantes = () => {
+               return( "" );
+            }
+            ,
+            guias = () => {
+               return( "" );
+            }
+            ,
+            tabicas = ( width, height ) => {
+               return(
+                  Math.ceil( perímetro( width, height ) / 3 )
+               );
+            }
+            ,
+            perfis = ( width ) => {
+               return(
+                  Math.floor( width / .6 )
+               );
+            }
+            ,
+            reguladores = ( width ) => {
+               return(
+                  perfis( width ) * 3
+               );
+      
+               /* 
+                  =================================
+                  |   |   |   |   |   |   |   |   I
+                  |   @   |   @   |   @   |   @   | .6
+                  |   |   |   |   |   |   |   |   |
+                  |   |   |   |   |   |   |   |   |
+                  |   @   |   @   |   @   |   @   | 1
+                  |   |   |   |   |   |   |   |   |
+                  |   |   |   |   |   |   |   |   |
+                  |   @   |   @   |   @   |   @   | .6
+                  |   |   |   |   |   |   |   |   |
+                  =================================
+               */
+            }
+            fixadores = ( width ) => {
+               return(
+                  reguladores( width )
+               );
+            }
+            ,
+            tirantes = ( width, rebaixo ) => {
+               return(
+                  /* return metros */
+                  reguladores( width ) * rebaixo
+               );
+            }
+            ,
+            parafusos = {
+               gn25: ( width, height ) => {
+                  return(
+                     chapas( width, height ) * 27
+                  );
+               },
+               buchas: ( width, height ) => {
+                  let tabs = ( tabicas( width, height ) / .5 );
+      
+                  return( 
+                     // ( tabcas( width, height ) / .5 )
+                     tabs + ( tabs * 2 )
+                  );
+               },
+               metal: ( width ) => {
+                  return(
+                     perfis( width ) * 2
+                  );
+               },
+            }
+            ,
+            massas = ( width, height ) => {
+               return(
+                  Math.ceil( area( width, height ) / 10 )
+               );
+            }
+         ;
          
          
          
@@ -270,105 +348,5 @@
 
 <script id="formulas">
    const 
-      width = 6
-      ,
-      height = 3
-      ,
-      area = ( width, height ) => {
-         return(
-            width * height
-         );
-      }
-      ,
-      perímetro = ( width, height ) => {
-         return( 
-            ( width + height ) * 2 
-         );
-      }
-      ,
-      chapas = ( width, height ) => {
-         return(
-            Math.ceil( ( ( width * height ) / ( 1.2 * 1.8 ) * 1.05 ) )
-         );
-      },
-      montantes = () => {
-         return( "" );
-      }
-      ,
-      guias = () => {
-         return( "" );
-      }
-      ,
-      tabicas = ( width, height ) => {
-         return(
-            Math.ceil( perímetro( width, height ) / 3 )
-         );
-      }
-      ,
-      perfis = ( width ) => {
-         return(
-            Math.floor( width / .6 )
-         );
-      }
-      ,
-      reguladores = ( width ) => {
-         return(
-            perfis( width ) * 3
-         );
-
-         /* 
-            =========================
-            I  I  I  I  I  I  I  I  I
-            I  @  I  @  I  @  I  @  I .6
-            I  I  I  I  I  I  I  I  I
-            I  I  I  I  I  I  I  I  I
-            I  @  I  @  I  @  I  @  I 1
-            I  I  I  I  I  I  I  I  I
-            I  I  I  I  I  I  I  I  I
-            I  @  I  @  I  @  I  @  I .6
-            I  I  I  I  I  I  I  I  I
-            =========================
-         */
-      }
-      fixadores = ( width ) => {
-         return(
-            reguladores( width )
-         );
-      }
-      ,
-      tirantes = ( width, rebaixo ) => {
-         return(
-            /* return metros */
-            reguladores( width ) * rebaixo
-         );
-      }
-      ,
-      parafusos = {
-         gn25: ( width, height ) => {
-            return(
-               chapas( width, height ) * 27
-            );
-         },
-         buchas: ( width, height ) => {
-            let tabs = ( tabicas( width, height ) / .5 );
-
-            return( 
-               // ( tabcas( width, height ) / .5 )
-               tabs + ( tabs * 2 )
-            );
-         },
-         metal: () => {
-            return(
-               perfis( width ) * 2
-            );
-         },
-      }
-      ,
-      massas = ( width, height ) => {
-         return(
-            Math.ceil( area( width, height ) / 10 )
-         );
-      }
-   ;
 
 </script>
