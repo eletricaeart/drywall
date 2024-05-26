@@ -220,9 +220,9 @@
                   _( "Area.area: ", Area.area );
                   Area.linear = ( ( Area.comprimento * 2 ) + ( Area.largura * 2 ) );
                   _( "Area.linear: ", Area.linear );
-                  Area.placas = Math.round( Area.area / Area.placa );
+                  Area.placas = Math.ceil( Area.area / Area.placa );
                   Area.linear = input_perimetro.value = ( ( Area.comprimento * 2 ) + ( Area.largura * 2 ) );
-                  Area.tabicas = Math.round( Area.linear / 3 );/*
+                  Area.tabicas = Math.ceil( Area.linear / 3 );/*
                   Area.perfis = 
                   Area.arames = 
                   Area.reguladores = 
@@ -288,7 +288,7 @@
       ,
       chapas = ( width, height ) => {
          return(
-            Math.round( ( ( width * height ) / ( 1.2 * 1.8 ) * 1.05 ) )
+            Math.ceil( ( ( width * height ) / ( 1.2 * 1.8 ) * 1.05 ) )
          );
       },
       montantes = () => {
@@ -301,7 +301,7 @@
       ,
       tabicas = ( width, height ) => {
          return(
-            Math.round( perímetro( width, height ) / 3 )
+            Math.ceil( perímetro( width, height ) / 3 )
          );
       }
       ,
@@ -330,6 +330,11 @@
             =========================
          */
       }
+      fixadores = ( width ) => {
+         return(
+            reguladores( width )
+         );
+      }
       ,
       tirantes = ( width, rebaixo ) => {
          return(
@@ -339,13 +344,18 @@
       }
       ,
       parafusos = {
-         gn25: () => {
+         gn25: ( width, height ) => {
             return(
-               placas * 27
+               chapas( width, height ) * 27
             );
          },
-         buchas: () => {
-            return( "" );
+         buchas: ( width, height ) => {
+            let tabs = ( tabicas( width, height ) / .5 );
+
+            return( 
+               // ( tabcas( width, height ) / .5 )
+               tabs + ( tabs * 2 )
+            );
          },
          metal: () => {
             return(
@@ -356,7 +366,7 @@
       ,
       massas = ( width, height ) => {
          return(
-            Math.round( area( width, height ) / 10 )
+            Math.ceil( area( width, height ) / 10 )
          );
       }
    ;
