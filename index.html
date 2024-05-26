@@ -68,7 +68,8 @@
                   <h2>Lista de materiais</h2>
                </content>
             </header>
-            <outputs content id="outputs" gap>
+            
+            <!--outputs content id="outputs" gap>
                <label>
                   <lt>Chapas de gesso st 1.20m x 1.80m</lt>
                   <input type="number" id="output_chapas" value="" >
@@ -117,7 +118,122 @@
                   <lt>Massa DryWall</lt>
                   <input type="number" id="output_massas" value="" >
                </label>
-            </outputs>
+            </outputs-->
+            
+            <orcamento content id="outputs" gap>
+               <style>
+                  table#table_orcamento {
+                     background: #18161c;
+                     width: 95dvw;
+                     border-radius: 13px;
+                     overflow: hidden;
+                  }
+                  
+                  th {
+                     background: #060;
+                  }
+                  
+                  tbody > *:nth-child( odd ) {
+                     background: #212329;
+                  }
+                  
+                  tbody > tr > td:nth-child( 1 ) {
+                     /* 59054 */
+                     text-align: right;
+                  }
+                  
+                  tbody > tr > td:nth-child( 2 ) {
+                     /* 59054 */
+                     text-align: left;
+                  }
+               </style>
+               <table id="table_orcamento">
+                  <thead>
+                     <tr>
+                        <th>QTD</th>
+                        <th>DESCRIÇÃO</th>
+                        <th>R$ Unt.</th>
+                        <th>R$ Total</th>
+                     </tr>
+                  </thead>
+                  <tbody id="tbody">
+                     <tr>
+                        <td id="output_chapas">0</td>
+                        <td>Chapas de gesso st</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_tabicas"></td>
+                        <td>Tabica branca 3m</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_perfis"></td>
+                        <td>Perfil F-530</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_tirantes"></td>
+                        <td>Tirantes ( Arame 10 )</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_reguladores"></td>
+                        <td>Regulador</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_unioes"></td>
+                        <td>união</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_gn25"></td>
+                        <td>Parafusos GN 25</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_fixadores"></td>
+                        <td>Parafusos Fixadores</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_metal"></td>
+                        <td>Parafusos metal metal</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_buchas"></td>
+                        <td>Parafuso 4,5 x 45 com bucha</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_fitas"></td>
+                        <td>Fita de papel</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td id="output_massas"></td>
+                        <td>Massa DryWall</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                     </tr>
+                  </tbody>
+               </table>
+            </orcamento>
          </lista-de-materiais>
       </home-page>
       
