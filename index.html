@@ -288,15 +288,15 @@
       ,
       chapas = ( width, height ) => {
          return(
-            Math.round( ( width * height ) / ( 1.2 * 1.8 ) ) * .05
+            Math.round( ( ( width * height ) / ( 1.2 * 1.8 ) * 1.05 ) )
          );
       },
       montantes = () => {
-         return();
+         return( "" );
       }
       ,
       guias = () => {
-         return();
+         return( "" );
       }
       ,
       tabicas = ( width, height ) => {
@@ -333,6 +333,7 @@
       ,
       tirantes = ( width, rebaixo ) => {
          return(
+            /* return metros */
             reguladores( width ) * rebaixo
          );
       }
@@ -343,7 +344,9 @@
                placas * 27
             );
          },
-         buchas: ,
+         buchas: () => {
+            return( "" );
+         },
          metal: () => {
             return(
                perfis( width ) * 2
@@ -358,7 +361,4 @@
       }
    ;
 
-
-   formulas
-   m² = altura * largura
 </script>
