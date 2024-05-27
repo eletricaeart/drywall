@@ -11,12 +11,41 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="./src/assets/css/clb.css">
+      <script src="./src/assets/Scripts/Appbar.js" defer></script>
       <style>
+         appbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 81px;
+            position: fixed;
+            top: 0; left: 0;
+            background: #212329;
+         }
          
+         logo {
+            display: flex;
+            heigth: 81px;
+            aspect-ratio: 1 / 1;
+         }
+         
+         logo > svg {
+            width: 100%;
+            height: 81px;
+         }
+         
+         menu-icon {
+            display: flex;
+            height: 81px;
+            aspect-ratio: 1;
+            align-items: center;
+            justify-content: center;
+         }
       </style>
    </head>
    <body>
-      
+      <appbar></appbar>
       <home-page>
          <calculadora section="">
             <header>
@@ -62,69 +91,19 @@
                </form>
             </content>
          </calculadora>
-         <lista-de-materiais section>
+         <lista-de-materiais section pd="5vw 0">
             <header>
                <content>
                   <h2>Lista de materiais</h2>
                </content>
             </header>
             
-            <!--outputs content id="outputs" gap>
-               <label>
-                  <lt>Chapas de gesso st 1.20m x 1.80m</lt>
-                  <input type="number" id="output_chapas" value="" >
-               </label>
-               <label>
-                  <lt>Tabica branca 3m</lt>
-                  <input type="number" id="output_tabicas" value="" >
-               </label>
-               <label>
-                  <lt>Perfil F-530</lt>
-                  <input type="number" id="output_perfis" value="" >
-               </label>
-               <label>
-                  <lt>Tirantes ( Arame 10 )</lt>
-                  <input type="number" id="output_tirantes" value="" >
-               </label>
-               <label>
-                  <lt>Regulador</lt>
-                  <input type="number" id="output_reguladores" value="" >
-               </label>
-               <label>
-                  <lt>união</lt>
-                  <input type="number" id="output_unioes" value="" >
-               </label>
-               <label>
-                  <lt>Parafusos GN 25</lt>
-                  <input type="number" id="output_gn25" value="" >
-               </label>
-               <label>
-                  <lt>Parafusos Fixadores</lt>
-                  <input type="number" id="output_fixadores" value="" >
-               </label>
-               <label>
-                  <lt>Parafusos metal metal</lt>
-                  <input type="number" id="output_metal" value="" >
-               </label>
-               <label>
-                  <lt>Parafuso 4,5 x 45 com bucha</lt>
-                  <input type="number" id="output_buchas" value="" >
-               </label>
-               <label>
-                  <lt>Fita de papel</lt>
-                  <input type="number" id="output_fitas" value="" >
-               </label>
-               <label>
-                  <lt>Massa DryWall</lt>
-                  <input type="number" id="output_massas" value="" >
-               </label>
-            </outputs-->
-            
-            <orcamento content id="outputs" gap>
+            <orcamento section id="outputs" gap>
                <style>
                   table#table_orcamento {
                      background: #18161c;
                      width: 95dvw;
+                     margin: auto;
                      border-radius: 13px;
                      overflow: hidden;
                   }
@@ -145,6 +124,21 @@
                   tbody > tr > td:nth-child( 2 ) {
                      /* 59054 */
                      text-align: left;
+                  }
+                  
+                  tfooter {
+                     display: flex;
+                  }
+                     
+                  tfooter > tr {
+                     display: flex;
+                     flex: 1;
+                  }
+                  
+                  #tfooterData {
+                     flex: 1;
+                     text-align: center;
+                     background: #060;
                   }
                </style>
                <table id="table_orcamento">
@@ -234,7 +228,9 @@
                   </tbody>
                   <tfooter>
                      <tr>
-                        <td id=""></td>
+                        <td colspan="4" id="tfooterData">
+                           Valor Total R$: 
+                        </td>
                      </tr>
                   </tfooter>
                </table>
@@ -280,6 +276,7 @@
                },
             }
          ;
+         
          
          const 
             tiposDePlacas = {
@@ -436,6 +433,14 @@
             } );
                
                
+            
+            /* == [ padding ] 
+            == == == == == == == == == */
+            $$( "[pd]" ).forEach( p => {
+               p.style.padding = p.getAttribute( "pd" );
+            } );
+            
+            
             _( "oi" );
             
             
