@@ -133,7 +133,7 @@ let appbarTemplate = `
       </svg>
    </logo>
    <menu-icon>
-      <t1>&#9776;</t1>
+      <t1 btn>&#9776;</t1>
    </menu-icon>
 </appbar>
 `;

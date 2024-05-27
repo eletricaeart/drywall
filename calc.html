@@ -10,7 +10,12 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <!--- == [ stylesheets ]
+      == == == == == == == == == --->
       <link rel="stylesheet" href="./src/assets/css/clb.css">
+      <!--- == [ scripts ]
+      == == == == == == == == == --->
+      <script src="./src/assets/Scripts/CLB.js" defer></script>
       <script src="./src/assets/Scripts/Appbar.js" defer></script>
       <style>
       </style>
@@ -27,7 +32,6 @@
             <content>
                <form action="" id="form">
                   <label>
-                     <!-- input type="text" id="tipoDePlaca" placeholder="tipo de placa"-->
                      <lt>Tipo de placa</lt>
                      <select input id="input_tipoDaChapa">
                         <option id="option_st">st</option>
@@ -212,23 +216,6 @@
       <script>
          "use strict";
          
-         /* == [ properties ]
-         == == == == == == == == == */
-         const 
-            _ = ( ...v ) => console.log( ...v )
-            ,
-            $ = v => document.querySelector( v )
-            ,
-            $$ = v => document.querySelectorAll( v )
-            , 
-            M = v => Math.round( v )
-         ;
-         HTMLElement.prototype.$a = function( v ) {
-            return( 
-               this.getAttribute( v )
-            );
-         }
-         _( "HTMLElement: ", submit_calcular.$a( "type" ) );
          let 
             curso = {
                "00": {
@@ -431,41 +418,12 @@
                );
             }
          ;
-         // function tabicas( width, height ) {
-         //    return(
-         //       Math.ceil( perímetro( width, height ) / 3 )
-         //    );
-         // }
          
          
          
          /* == [ events ]
          == == == == == == == == == */
          addEventListener( "load", () => {
-            
-            
-            /* == [ nav-link ] 
-            == == == == == == == == == */
-            $$( "nav-link" ).forEach( nl => {  
-               _( "oi" );
-               nl.outerHTML = `
-                  <p>
-                     <a href="${ nl.getAttribute( "to" ) }"
-                        target="_blank" >
-                        ${ nl.innerText }
-                     </a>
-                  </p>
-               `;
-            } );
-               
-               
-            
-            /* == [ padding ] 
-            == == == == == == == == == */
-            $$( "[pd]" ).forEach( p => {
-               p.style.padding = p.getAttribute( "pd" );
-            } );
-            
             
             function createData() {
                
@@ -474,8 +432,6 @@
             function createTable() {
                
             }
-            
-            
             
             form.addEventListener( "submit", () => {
                event.preventDefault();

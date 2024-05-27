@@ -2,28 +2,49 @@
 
 
 "use strict";
-/* [ properties ]
-=================================== */
-const $ = v => document.querySelector( v ),
-	$$ = v => document.querySelectorAll( v ),
-	log = v => console.log( v );
+/* == [ properties ]
+== == == == == == == == == */
+const 
+   _ = ( ...v ) => console.log( ...v )
+   ,
+   $ = v => document.querySelector( v )
+   ,
+   $$ = v => document.querySelectorAll( v )
+;
+
+HTMLElement.prototype.$a = function( v ) {
+   return( 
+      this.getAttribute( v )
+   );
+}
+_( "HTMLElement: ", submit_calcular.$a( "type" ) );
+         
 /* -------------------------------- */
 
 
 
-/* [ events ]
-=================================== */
+/* == [ events ]
+== == == == == == == == == */
 window.addEventListener( "load", ev => {
-	let links = $$( "[link]" ),
-		pages = $$( "[page]" );
-
-
-
-	links.forEach( link => link.addEventListener( "click", ev => {
-		window.open( link.getAttribute( "link" ), "_blank" );
-	} ) );
-	pages.forEach( page => page.addEventListener( "click", ev => {
-		window.open( page.getAttribute( "page" ), "_self" );
-	} ) );
+	
+   /* == [ nav-link ] 
+   == == == == == == == == == */
+   $$( "nav-link" ).forEach( nl => {  
+      _( "oi" );
+      nl.outerHTML = `
+         <p>
+            <a href="${ nl.getAttribute( "to" ) }"
+               target="_blank" >
+               ${ nl.innerText }
+            </a>
+         </p>
+      `;
+   } );
+   
+   /* == [ padding ] 
+   == == == == == == == == == */
+   $$( "[pd]" ).forEach( p => {
+      p.style.padding = p.getAttribute( "pd" );
+   } );
 
 } );
