@@ -499,24 +499,17 @@
             } );
             
             
-            _( "oi" );
             
             
             form.addEventListener( "submit", () => {
                event.preventDefault();
-               _( "\n\n\non submit: ",
-                  input_tipoDaChapa.value
-               );
+               
                if( input_length.value != "" ) {
                   values.Length = input_length.value;
                   values.Width = input_width.value;
                   values.rebaixo = input_rebaixo.value;
-                  // chapa = eval( `Area.tiposDePlacas.${ tipoDaPlaca.value }` );
-                  // _( "eval: ", Area.placa );
                   values.area = area( values.Length, values.Width );
-                  _( "area: ", values.area );
                   values.perímetro = perímetro( values.Length, values.Width );
-                  _( "perímetro: ", values.perímetro );
                   values.chapas = chapas( values.Length, values.Width );
                   values.tabicas = tabicas( values.Length, values.Width );
                   values.perfis = perfis( values.Length );
@@ -530,7 +523,7 @@
                   // values.fitas = fitas( values.Length );
                   values.massas = massas( values.Length, values.Width );
                   
-                  /* outputs */
+                  /* == outputs == == == == == == == == == */
                   input_area.value = values.area;
                   input_perímetro.value = values.perímetro;
                   output_chapas.innerText = values.chapas;
@@ -547,7 +540,7 @@
                } 
             } );
             
-         } );  // addEventListener
+         } );
          
       </script>
    </body>
