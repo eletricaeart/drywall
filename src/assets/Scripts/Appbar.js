@@ -6,7 +6,37 @@
 let appbarTemplate = `
 <appbar>
    <style>
+      appbar {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         width: 100%;
+         height: 81px;
+         position: sticky;
+         top: 0; left: 0;
+         background: #212329;
+         background: #1b1d22;
+         background: #16181c;
+      }
       
+      logo {
+         display: flex;
+         heigth: 81px;
+         aspect-ratio: 1 / 1;
+      }
+      
+      logo > svg {
+         width: 100%;
+         height: 81px;
+      }
+      
+      menu-icon {
+         display: flex;
+         height: 81px;
+         aspect-ratio: 1;
+         align-items: center;
+         justify-content: center;
+      }
    </style>
    <logo>
       <svg 
