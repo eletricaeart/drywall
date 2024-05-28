@@ -50,11 +50,11 @@
                   </label>
                   <label>
                      <lt>Comprimento</lt>
-                     <input type="number" id="input_length" placeholder="comprimento">
+                     <input type="number" id="input_length" step="0.01" placeholder="comprimento">
                   </label>
                   <label>
                      <lt>Largura</lt>
-                     <input type="number" id="input_width" placeholder="largura">
+                     <input type="number" id="input_width" step="0.01" placeholder="largura">
                   </label>
                   <label>
                      <lt>Rebaixo</lt>
@@ -62,12 +62,12 @@
                   </label>
                   <label>
                      <lt>Área ( metro quadrado )</lt>
-                     <input type="number" id="input_area" placeholder="área">
+                     <input type="number" id="input_area" step="0.01" placeholder="área">
                   </label>
                      
                   <label>
                      <lt>Perímetro ( metro linear )</lt>
-                     <input type="number" id="input_perímetro" placeholder="Perímetro">
+                     <input type="number" id="input_perímetro" step="0.01" placeholder="Perímetro">
                   </label>
                      
                   <label>
@@ -542,7 +542,7 @@
                         name: "Fita de papel",
                         value: values.fitas,
                         qtd: 0,
-                        unit: 55-,
+                        unit: 55,
                         total: 0,
                      },
                      massas: {
@@ -594,3 +594,9 @@
       </script>
    </body>
 </html>
+
+<!--
+quebrar 600
+privada 400
+ralo 200
+-->
