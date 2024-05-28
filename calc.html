@@ -18,6 +18,16 @@
       <script src="./src/assets/Scripts/CLB.js" defer></script>
       <script src="./src/assets/Scripts/Appbar.js" defer></script>
       <style>
+         tr > *:nth-child( 1 ) {
+         }
+         tr > *:nth-child( 2 ) {
+         }
+         tr > *:nth-child( 3 ) {
+            width: 10%;
+         }
+         tr > *:nth-child( 4 ) {
+            width: 10%;
+         }
       </style>
    </head>
    <body>
@@ -426,49 +436,53 @@
          addEventListener( "load", () => {
             
             function createData() {
-               
+               values.Length = input_length.value;
+               values.Width = input_width.value;
+               values.rebaixo = input_rebaixo.value;
+               values.area = area( values.Length, values.Width );
+               values.perímetro = perímetro( values.Length, values.Width );
+               values.chapas = chapas( values.Length, values.Width );
+               values.tabicas = tabicas( values.Length, values.Width );
+               values.perfis = perfis( values.Length );
+               values.tirantes = tirantes( values.Length, values.rebaixo );
+               values.reguladores = reguladores( values.Length );
+               values.fixadores = fixadores( values.Length );
+               // values.unioes = unioes(  );
+               values.gn25 = parafusos.gn25( values.Length, values.Width );
+               values.buchas = parafusos.buchas( values.Length, values.Width );
+               values.metal = parafusos.metal( values.Length );
+               // values.fitas = fitas( values.Length );
+               values.massas = massas( values.Length, values.Width );
             }
             
             function createTable() {
                
+            }
+
+            function outputData() {
+               input_area.value = values.area;
+               input_perímetro.value = values.perímetro;
+               output_chapas.innerText = values.chapas;
+               output_tabicas.innerText = values.tabicas;
+               output_perfis.innerText = values.perfis;
+               output_tirantes.innerText = values.tirantes;
+               output_reguladores.innerText = values.reguladores;
+               output_fixadores.innerText = values.fixadores;
+               //output_unioes.innerText = values.unioes;
+               output_gn25.innerText = values.gn25;
+               output_buchas.innerText = values.buchas;
+               output_fitas.innerText = values.fitas;
+               output_massas.innerText = values.massas;
             }
             
             form.addEventListener( "submit", () => {
                event.preventDefault();
                
                if( input_length.value != "" ) {
-                  values.Length = input_length.value;
-                  values.Width = input_width.value;
-                  values.rebaixo = input_rebaixo.value;
-                  values.area = area( values.Length, values.Width );
-                  values.perímetro = perímetro( values.Length, values.Width );
-                  values.chapas = chapas( values.Length, values.Width );
-                  values.tabicas = tabicas( values.Length, values.Width );
-                  values.perfis = perfis( values.Length );
-                  values.tirantes = tirantes( values.Length, values.rebaixo );
-                  values.reguladores = reguladores( values.Length );
-                  values.fixadores = fixadores( values.Length );
-                  // values.unioes = unioes(  );
-                  values.gn25 = parafusos.gn25( values.Length, values.Width );
-                  values.buchas = parafusos.buchas( values.Length, values.Width );
-                  values.metal = parafusos.metal( values.Length );
-                  // values.fitas = fitas( values.Length );
-                  values.massas = massas( values.Length, values.Width );
+                  createData();
                   
-                  /* == outputs == == == == == == == == == */
-                  input_area.value = values.area;
-                  input_perímetro.value = values.perímetro;
-                  output_chapas.innerText = values.chapas;
-                  output_tabicas.innerText = values.tabicas;
-                  output_perfis.innerText = values.perfis;
-                  output_tirantes.innerText = values.tirantes;
-                  output_reguladores.innerText = values.reguladores;
-                  output_fixadores.innerText = values.fixadores;
-                  //output_unioes.innerText = values.unioes;
-                  output_gn25.innerText = values.gn25;
-                  output_buchas.innerText = values.buchas;
-                  output_fitas.innerText = values.fitas;
-                  output_massas.innerText = values.massas;
+                  outputData();
+                  
                } 
             } );
             
