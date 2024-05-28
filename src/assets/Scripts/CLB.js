@@ -10,6 +10,8 @@ const
    $ = v => document.querySelector( v )
    ,
    $$ = v => document.querySelectorAll( v )
+   ,
+   fix = v => v.toFixed( 2 )
 ;
 
 HTMLElement.prototype.$a = function( v ) {

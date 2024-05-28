@@ -139,8 +139,8 @@
                      <tr>
                         <td id="output_chapas">0</td>
                         <td>Chapas de gesso st</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="output_chapas_unit">0</td>
+                        <td  id="output_chapas_total">0</td>
                      </tr>
                      <tr>
                         <td id="output_tabicas"></td>
@@ -205,8 +205,8 @@
                      <tr>
                         <td id="output_massas"></td>
                         <td>Massa DryWall</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="output_massas_unit">0</td>
+                        <td id="output_massas_total">0</td>
                      </tr>
                      <tr>
                      </tr>
@@ -472,67 +472,67 @@
                         name: "Chapas de gesso st.",
                         qtd: values.chapas,
                         unit: 38.90,
-                        total: 38.90 * values.chapas,
+                        total: fix( 38.90 * values.chapas ),
                      },
                      tabicas: {
                         name: "Tabica branca 3m",
                         qtd: values.tabicas,
-                        unit: 24.90,
-                        total: 24.90 * values.tabicas,
+                        unit: 12.81,
+                        total: fix( 12.81 * values.tabicas ),
                      },
                      perfis: {
                         name: "Perfil canaleta F-530",
                         qtd: values.perfis,
-                        unit: 19.90,
-                        total: 19.90 * values.perfis,
+                        unit: 11.90,
+                        total: fix( 11.90 * values.perfis ),
                      },
                      tirantes: {
                         name: "Tirantes ( Arame 10 )",
                         qtd: values.tirantes,
                         unit: 19.90,
-                        total: 19.90 * values.tirantes,
+                        total: fix( 19.90 * values.tirantes ),
                      },
                      reguladores: {
                         name: "Regulador",
                         qtd: values.reguladores,
                         unit: 1.49,
-                        total: 1.49 * values.reguladores,
+                        total: fix( 1.49 * values.reguladores ),
                      },
                      fixadores: {
                         name: "Parafusos Fixadores",
                         qtd: values.fixadores,
                         unit: 0.139,
-                        total: 0.139 * values.fixadores,
+                        total: fix( 0.139 * values.fixadores ),
                      },
                      unioes: {
                         name: "União",
                         qtd: values.unioes,
                         unit: 1.30,
-                        total: 1.30 * values.unioes,
+                        total: fix( 1.30 * values.unioes ),
                      },
                      gn25: {
                         name: "Parafusos GN 25",
                         qtd: values.gn25,
                         unit: 0.055,
-                        total: 0.055 * values.gn25,
+                        total: fix( 0.055 * values.gn25 ),
                      },
                      buchas: {
                         name: "Parafuso 4,5 x 45 com bucha",
                         qtd: values.buchas,
                         unit: 0.181,
-                        total: 0.181 * values.buchas,
+                        total: fix( 0.181 * values.buchas ),
                      },
                      fitas: {
                         name: "Fita de papel",
                         qtd: values.fitas,
                         unit: 55.00,
-                        total: 55.00 * values.fitas,
+                        total: fix( 55.00 * values.fitas ),
                      },
                      massas: {
                         name: "Massa DryWall",
                         qtd: values.massas,
                         unit: 37.40,
-                        total: 37.40 * values.massas,
+                        total: fix( 37.40 * values.massas ),
                      },
                   };
                db.push( data );
@@ -546,6 +546,10 @@
                input_area.value = values.area;
                input_perímetro.value = values.perímetro;
                output_chapas.innerText = values.chapas;
+               output_chapas_unit.innerText = (38.40).toLocaleString( "pt-br", { style: "currency", currency: "BRL" } );
+               output_chapas_total.innerText = ( 38.90 * values.chapas ).toFixed( 2 );
+               // toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+               
                output_tabicas.innerText = values.tabicas;
                output_perfis.innerText = values.perfis;
                output_tirantes.innerText = values.tirantes;
