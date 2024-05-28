@@ -332,6 +332,8 @@
                fitas: 0,
             }
             ,
+            db = []
+            ,
             area = ( width, height ) => {
                return(
                   width * height
@@ -455,6 +457,105 @@
                values.massas = massas( values.Length, values.Width );
             }
             
+            function createDB() {
+               db.push( 
+                  {
+                     id: 0,
+                     area: {
+                        name: "Área ( metro quadrado )",
+                        value: values.area,
+                        qtd: 0,
+                        unit: 0,
+                        total: 0,
+                     },
+                     perímetro: {
+                        name: "Perímetro ( metro linear )",
+                        value: values.perímetro,
+                        qtd: 0,
+                        unit: 0,
+                        total: 0,
+                     },
+                     chapas: {
+                        name: "Chapas de gesso st.",
+                        value: values.chapas,
+                        qtd: 0,
+                        unit: 38.9,
+                        total: 0,
+                     },
+                     tabicas: {
+                        name: "Tabica branca 3m",
+                        value: values.tabicas,
+                        qtd: 0,
+                        unit: 24.9,
+                        total: 0,
+                     },
+                     perfis: {
+                        name: "Perfil canaleta F-530",
+                        value: values.perfis,
+                        qtd: 0,
+                        unit: 19.9,
+                        total: 0,
+                     },
+                     tirantes: {
+                        name: "Tirantes ( Arame 10 )",
+                        value: values.tirantes,
+                        qtd: 0,
+                        unit: 19.9,
+                        total: 0,
+                     },
+                     reguladores: {
+                        name: "Regulador",
+                        value: values.reguladores,
+                        qtd: 0,
+                        unit: 1.49,
+                        total: 0,
+                     },
+                     fixadores: {
+                        name: "Parafusos Fixadores",
+                        value: values.fixadores,
+                        qtd: 0,
+                        unit: 0.139,
+                        total: 0,
+                     },
+                     unioes: {
+                        name: "União",
+                        value: values.unioes,
+                        qtd: 0,
+                        unit: 1.3,
+                        total: 0,
+                     },
+                     gn25: {
+                        name: "Parafusos GN 25",
+                        value: values.gn25,
+                        qtd: 0,
+                        unit: 0.055,
+                        total: 0,
+                     },
+                     buchas: {
+                        name: "Parafuso 4,5 x 45 com bucha",
+                        value: values.buchas,
+                        qtd: 0,
+                        unit: 0.181,
+                        total: 0,
+                     },
+                     fitas: {
+                        name: "Fita de papel",
+                        value: values.fitas,
+                        qtd: 0,
+                        unit: 55,
+                        total: 0,
+                     },
+                     massas: {
+                        name: "Massa DryWall",
+                        value: values.massas,
+                        qtd: 0,
+                        unit: 37.4,
+                        total: 0,
+                     },
+                  } 
+               );
+            }
+            
             function createTable() {
                
             }
@@ -483,7 +584,9 @@
                   
                   outputData();
                   
-               } 
+               } else {
+
+               }
             } );
             
          } );
