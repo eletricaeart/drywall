@@ -19,8 +19,8 @@ HTMLElement.prototype.$a = function( v ) {
       this.getAttribute( v )
    );
 }
-_( "HTMLElement: ", submit_calcular.$a( "type" ) );
-         
+// _( "HTMLElement: ", submit_calcular.$a( "type" ) );
+
 /* -------------------------------- */
 
 
